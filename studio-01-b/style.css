@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+:root {
+  /* Colors */
+  --light: #fcf0f0;
+  --dark: #111111;
+  --maroon: #5f0000;
+  --maroon-hover: #690606;
+  --maroon-active: #4d0000;
+
+  /* Fonts */
+  --sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* --comic: 'Comic Sans'; */
+  --comic: cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* Set the bg color to gray */
+  background-color: var(--light);
+  font-family: var(--sans);
+  font-size: 1rem;
+}
+
+header, main {
+  margin: 2rem;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.col {
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.input-section textarea {
+  width: 100%;
+}
+
+.bg-maroon {
+  background-color: maroon;
+}
+
+.bg-dark {
+  background: var(--dark);
+}
+
+.color-light {
+  color: var(--light);
+}
+
+.enthusiastic {
+  font-family: var(--comic);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.query {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.input-section {
+  gap: 1rem;
+}
+
+.greeting {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  line-height: unset;
+}
+
+button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+button:hover {
+  background: var(--maroon-hover);
+}
+
+button:active {
+  background: var(--maroon-active);
+}
+
+p {
+  letter-spacing: 0.125em;
+  text-align: center;
+  line-height: 0.8;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--dark);
+  border-radius: 0.5rem;
+}
+
+#idea {
+  min-height: 10rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+@media (min-width: 300px) {
+  header, main {
+    margin: 1rem auto;
+    width: 100%
+  }
+}
+
+@media (min-width: 550px) {
+  header, main {
+    margin: 2rem auto;
+    width: 80%
+  }
+}
+
+@media (min-width: 768px) {
+  header, main {
+    width: 70%
+  }
+}
+
+@media (min-width: 1024px) {
+  header, main {
+    width: 60%
+  }
+}
+
+@media (min-width: 1280px) {
+  input[type="text"] {
+    width: 30%;
+  }
+  header, main {
+    width: 60%
+  }
+}

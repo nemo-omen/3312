@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+   <meta charset="UTF-8" />
+
+   <!-- Set Page Title -->
+   <title>Gotta Start Somewhere</title>
+
+   <!--
+CS 3312, spring 2022
+Studio 1
+YOUR NAME: Jeff Caldwell
+-->
+
+   <!-- Import a CSS stylesheet to style the page. -->
+   <link href="style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+   <!-- Page content goes here.  Elements can be nested inside other elements. -->
+   <h1>Welcome to CS 3312</h1>
+   <p>
+      What is your name?&nbsp;
+      <input id="name-input" type="text" />
+      <button id="submit-name" type="button">Submit it</button>
+   </p>
+   <p class="greeting" id="howdy">
+      Howdy, <span id="name-output">student</span>!
+   </p>
+
+   <!-- Add level 2 heading -->
+   <h2>Brainstorms</h2>
+
+   <!-- add idea paragraph -->
+   <p class="info" id="web-app-idea">
+      I'd like to create a Pomodoro timer app that allows users to create, start, and stop Pomodoro timers. These timers
+      run in cycles of 25 minutes and 5 minutes, for work time and break time respectively. The user should be able to
+      adjust the work time and break time, start and stop the timers, and save specific timer configurations.
+   </p>
+
+   <!-- Import a JavaScript script to add interactivity to the page. -->
+   <script src="script.js"></script>
+
+</body>
+
+</html>

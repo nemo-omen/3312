@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example Page</title>
+  <!-- Self-closing tabs no longer require a trailing slash -->
+  <!-- See: https://developer.mozilla.org/en-US/docs/Glossary/Empty_element -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Using 'defer' rather than cluttering body markup -->
+  <!-- See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header class="flex col bg-maroon color-light">
+    <h1 class="text-center">Welcome to CS 3312</h1>
+  </header>
+
+  <main>
+    <div class="flex col">
+      <div class="flex col align-center input-section">
+        <p class="query">What is your name?</p>
+        <input type="text" id="idea-input">
+        <button id="submit" class="bg-maroon color-light">Submit</button>
+      </div>
+
+      <div class="output hidden">
+
+        <p class="greeting bg-maroon color-light"></p>
+
+        <div class="brainstorms align-center flex col">
+          <h2>Brainstorms</h2>
+          <div id="idea" class="enthusiastic bg-dark color-light" contenteditable="true"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
