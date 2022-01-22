@@ -1,9 +1,28 @@
+<!--  
+   I already have some experience with HTML, so most of the code below is prior knowledge.
+
+   I'll link to specific MDN or W3C documentation where it seems appropriate.
+
+   Or, since I'm trying to gain a better understanding of accessibility(a11y)
+   best-practices, I'll link to documentation that explains why a given approach
+   is best for inclusive document design.
+-->
+
 <!DOCTYPE html>
 <html lang="en-US">
 
 <head>
 
    <meta charset="UTF-8" />
+
+   <!-- 
+      Allows for greater control of how the page content is displayed on devices of varying size
+      especially smartphones.
+
+      @see: https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag
+   -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.86, maximum-scale=5.0" />
+
    <title>Approval Voting Ballot</title>
 
    <!--
@@ -14,105 +33,153 @@
 
    <!-- Import a CSS stylesheet to style the page. -->
    <!-- <link href="style.css" rel="stylesheet" /> -->
-
 </head>
 
 <body>
+   <!-- 
+      <main> is a 'landmark element' that indicates everything within is the
+      primary content on the page.
 
-   <h1>A new way to vote</h1>
-   <p>Why be limited to voting for only one candidate?</p>
-   <form>
-      <fieldset>
-         <legend>A ballot using plurality voting</legend>
-         <ul>
-            <li>
-               <input type="radio" name="radio-roosevelt" id="radio-roosevelt">
-               <label for="radio-roosevelt">Theodore Roosevelt</label>
-            </li>
-            <li>
-               <input type="radio" name="radio-taft" id="radio-taft">
-               <label for="radio-taft">William Howard Taft</label>
-            </li>
-            <li>
-               <input type="radio" name="radio-wilson" id="radio-wilson">
-               <label for="radio-wilson">Woodrow Wilson</label>
-            </li>
-         </ul>
-      </fieldset>
+      @see: https://www.a11yproject.com/checklist/#global-code
+   -->
+   <main>
+      <!--
+         There can be only one!
+         (per page... if you want a well-structured document that makes sense to nin-sighted people.) 
+         
+         @see: https://www.a11yproject.com/checklist/#headings
+      -->
+      <h1>A new way to vote</h1>
+      <p>Why be limited to voting for only one candidate?</p>
 
-      <p>Approval voting lets you approve <em>any</em> candidate you like.</p>
+      <!-- Using a <form> here because a <fieldset> doesn't really make any sense otherwise -->
+      <form>
+         <!-- 
+            fieldset has fantastic default styling, I'd have to use absolute positioning
+            to get the same text/border overlap the default legend provides, plus, <fieldset>
+            and <legend> provide semantic information about the relationships of the enclosed
+            inputs.
+                  
+            @see: https://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-programmatic.html
+         -->
+         <fieldset>
+            <legend>A ballot using plurality voting</legend>
+            <ul>
+               <li>
+                  <!-- 
+                     I generally make 'name' and 'id' the same to reduce my own cognitive load ,
+                     but I keep both because 'name' will be used when the form is eventually submitted
+                     and I might need to select the input with JS at some point.
+                     
+                     @see: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+                  -->
+                  <input type="radio" name="radio-roosevelt" id="radio-roosevelt">
+                  <!-- 
+                     Always associate a label (or use aria-labelledby/aria-role="label")!
+                     
+                     @see: https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html
+                  -->
+                  <label for="radio-roosevelt">Theodore Roosevelt</label>
+               </li>
+               <li>
+                  <input type="radio" name="radio-taft" id="radio-taft">
+                  <label for="radio-taft">William Howard Taft</label>
+               </li>
+               <li>
+                  <input type="radio" name="radio-wilson" id="radio-wilson">
+                  <label for="radio-wilson">Woodrow Wilson</label>
+               </li>
+            </ul>
+         </fieldset>
 
-      <fieldset>
-         <legend>A ballot using approval voting</legend>
-         <ul>
-            <li>
-               <input type="checkbox" name="checkbox-roosevelt" id="checkbox-roosevelt">
-               <label for="checkbox-roosevelt">Theodore Roosevelt</label>
-            </li>
-            <li>
-               <input type="checkbox" name="checkbox-taft" id="checkbox-taft">
-               <label for="checkbox-taft">William Howard Taft</label>
-            </li>
-            <li>
-               <input type="checkbox" name="checkbox-wilson" id="checkbox-wilson">
-               <label for="checkbox-wilson">Woodrow Wilson</label>
-            </li>
-         </ul>
-      </fieldset>
+         <p>Approval voting lets you approve <em>any</em> candidate you like.</p>
 
-      <p>Some advantages:</p>
+         <fieldset>
+            <legend>A ballot using approval voting</legend>
+            <ul>
+               <li>
+                  <input type="checkbox" name="checkbox-roosevelt" id="checkbox-roosevelt">
+                  <label for="checkbox-roosevelt">Theodore Roosevelt</label>
+               </li>
+               <li>
+                  <input type="checkbox" name="checkbox-taft" id="checkbox-taft">
+                  <label for="checkbox-taft">William Howard Taft</label>
+               </li>
+               <li>
+                  <input type="checkbox" name="checkbox-wilson" id="checkbox-wilson">
+                  <label for="checkbox-wilson">Woodrow Wilson</label>
+               </li>
+            </ul>
+         </fieldset>
 
-      <ol>
-         <li>No <a href="https://en.wikipedia.org/wiki/Spoiler_effect">spoiler effect</a>.</li>
-         <li>No <a href="https://en.wikipedia.org/wiki/Strategic_nomination">strategic nomination</a>.</li>
-         <li>No <a href="https://en.wikipedia.org/wiki/Vote_splitting">vote-splitting</a>.</li>
-      </ol>
+         <p>Some advantages:</p>
 
-      <p>And now a what-if scenario:</p>
+         <ol>
+            <li>No <a href="https://en.wikipedia.org/wiki/Spoiler_effect">spoiler effect</a>.</li>
+            <li>No <a href="https://en.wikipedia.org/wiki/Strategic_nomination">strategic nomination</a>.</li>
+            <li>No <a href="https://en.wikipedia.org/wiki/Vote_splitting">vote-splitting</a>.</li>
+         </ol>
 
-      <table>
-         <thead>
+         <p>And now a what-if scenario:</p>
+
+         <table>
+            <thead>
+               <tr>
+                  <!-- 
+                     colspan needs to match the number of columns for the rest of the
+                     table in order to pass validation.
+                  -->
+                  <td colspan="3">
+                     1912 presidential election
+                  </td>
+               </tr>
+            </thead>
             <tr>
-               <td colspan="3">
-                  1912 presidential election
-               </td>
+               <th>candidate</th>
+               <th>actual popular vote</th>
+               <th>hypothetical approval vote</th>
             </tr>
-         </thead>
-         <tr>
-            <th>candidate</th>
-            <th>actual popular vote</th>
-            <th>hypothetical approval vote</th>
-         </tr>
-         <tr>
-            <td>Theodore Roosevelt</td>
-            <td>27.4%</td>
-            <td>52%</td>
-         </tr>
-         <tr>
-            <td>William Howard Taft</td>
-            <td>23.2%</td>
-            <td>48%</td>
-         </tr>
-         <tr>
-            <td>Woodrow Wilson</td>
-            <td>41.8%</td>
-            <td>43%</td>
-         </tr>
-      </table>
+            <tr>
+               <td>Theodore Roosevelt</td>
+               <td>27.4%</td>
+               <td>52%</td>
+            </tr>
+            <tr>
+               <td>William Howard Taft</td>
+               <td>23.2%</td>
+               <td>48%</td>
+            </tr>
+            <tr>
+               <td>Woodrow Wilson</td>
+               <td>41.8%</td>
+               <td>43%</td>
+            </tr>
+         </table>
 
-      <!-- Using an id attribute so I can refer to this element as a label -->
-      <!-- while taking advantage of the browser's default styles for <p> -->
-      <p id="email-label">
-         Enter your email address to receive updates on this issue:
-      </p>
+         <!-- 
+            Using an id attribute so I can refer to this element as a label
+            while taking advantage of the browser's default styles for <p>
+         -->
+         <p id="email-label">
+            Enter your email address to receive updates on this issue:
+         </p>
 
-      <!-- Using aria-labeledby to insure our input is accessible to anyone -->
-      <!-- who might be using a different interface that a screen -->
-      <input aria-labelledby="email-label" type="email" name="email-input" id="email-input">
-      <input type="submit" value="Add me!" />
-      <!-- If this were a real form, this would be: -->
-      <!-- <input type="submit" value="Add me!" /> -->
-   </form>
+         <!-- 
+            Using aria-labeledby to insure our input is accessible to anyone
+            who might be using a different interface than a screen
+         -->
+         <input aria-labelledby="email-label" type="email" name="email-input" id="email-input" required="true">
+         <input type="submit" value="Add me!" />
+
+         <!-- 
+            Since this form isn't really being submitted, the full a11y checklist can't be completed. 
+            If it had been a real form, I would have included validation messages etc. 
+            
+            @see: https://www.a11yproject.com/checklist/#forms
+            https://a11y-style-guide.com/style-guide/section-forms.html
+         -->
+      </form>
+   </main>
 </body>
 
 </html>
