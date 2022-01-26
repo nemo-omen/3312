@@ -129,15 +129,15 @@
                      colspan needs to match the number of columns for the rest of the
                      table in order to pass validation.
                   -->
-                  <td colspan="3">
+                  <th colspan="3" scope="row">
                      1912 presidential election
-                  </td>
+                  </th>
                </tr>
             </thead>
             <tr>
-               <th>candidate</th>
-               <th>actual popular vote</th>
-               <th>hypothetical approval vote</th>
+               <th scope="col">candidate</th>
+               <th scope="col">actual popular vote</th>
+               <th scope="col">hypothetical approval vote</th>
             </tr>
             <tr>
                <td>Theodore Roosevelt</td>
@@ -156,20 +156,14 @@
             </tr>
          </table>
 
-         <!-- 
-            Using an id attribute so I can refer to this element as a label
-            while taking advantage of the browser's default styles for <p>
-         -->
-         <p id="email-label">
-            Enter your email address to receive updates on this issue:
-         </p>
+         <p>
+            <label for="email-input">
+               Enter your email address to receive updates on this issue:
+            </label>
 
-         <!-- 
-            Using aria-labeledby to insure our input is accessible to anyone
-            who might be using a different interface than a screen
-         -->
-         <input aria-labelledby="email-label" type="email" name="email-input" id="email-input" required="true">
-         <input type="submit" value="Add me!" />
+            <input type="email" name="email-input" id="email-input" required>
+            <input type="submit" value="Add me!" />
+         </p>
 
          <!-- 
             Since this form isn't really being submitted, the full a11y checklist can't be completed. 
